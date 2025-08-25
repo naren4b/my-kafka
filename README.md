@@ -1,17 +1,18 @@
 # Install 
 ```bash
-docker run --rm -d --name kafka-ui \
-       --add-host=host.docker.internal:host-gateway  \
-       -p 8080:8080 \
-       -e DYNAMIC_CONFIG_ENABLED=true \
-       provectuslabs/kafka-ui
-       
 docker run --rm -d --name=fast-data-dev \
   --add-host=host.docker.internal:host-gateway \
   -p 9092:9092 -p 8081:8081 -p 8083:8083 -p 3030:3030 \
   -e ADV_HOST=host.docker.internal \
   -e ADV_PORT=9092 \
   lensesio/fast-data-dev
+
+docker run --rm -d --name kafka-ui \
+       --add-host=host.docker.internal:host-gateway  \
+       -p 8080:8080 \
+       -e DYNAMIC_CONFIG_ENABLED=true \
+       provectuslabs/kafka-ui      
+
 ```
 # Connect 
 ```mermaid
@@ -27,7 +28,12 @@ flowchart LR
     HostNetwork --> FDD9092
 
 ```
-Open http:localhost:8080 
+- Open fast-data-dev http://localhost:3030 # fast-data-dev Gui
+- Open http://localhost:8080 # kafka UI  
+```
 Add Broker: "host.docker.internal:9092"
+```
+
+
 
 
