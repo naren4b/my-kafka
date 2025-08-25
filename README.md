@@ -1,5 +1,5 @@
 # Install 
-```
+```bash
 docker run --rm -d --name kafka-ui \
        --add-host=host.docker.internal:host-gateway  \
        -p 8080:8080 \
