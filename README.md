@@ -35,5 +35,18 @@ Add Broker: "host.docker.internal:9092"
 ```
 
 
+# Create Topic 
+```bash
+TOPIC_NAME="Demo"
+kafka-topics --bootstrap-server host.docker.internal:9092 --topic $TOPIC_NAME --partitions 1 --replication-factor 1 --create --config retention.ms=60000 --config retention.bytes=52428800
+```
+# List Topic 
+```bash
+kafka-topics --bootstrap-server host.docker.internal:9092 --list
+```
 
+# Performance Test (basic kafka) 
+```bash
+kafka-producer-perf-test --topic coyote_basic_1756127177430 --throughput 100000 --record-size 1000 --num-records 500000 --producer-props bootstrap.servers="host.docker.internal:9092"
+```
 
